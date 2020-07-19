@@ -2,22 +2,22 @@ sudo: required
 services:
     - docker
 before_install:
-    - docker build -t anh/react-test -f ./client/Dockerfile.dev ./client
+    - docker build -t dcaprilfool/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-    - docker run -e CI=true anh/react-test npm test
+    - docker run -e CI=true dcaprilfool/react-test npm test
 
 after_success:
-    - docker build -t anh/multi-client ./client
-    - docker build -t anh/multi-nginx ./nginx
-    - docker build -t anh/multi-worker ./worker
-    - dokcer build -t anh/multi-server ./server
+    - docker build -t dcaprilfool/multi-client ./client
+    - docker build -t dcaprilfool/multi-nginx ./nginx
+    - docker build -t dcaprilfool/multi-worker ./worker
+    - dokcer build -t dcaprilfool/multi-server ./server
 
 # Login to DOCKER HUB
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
 # pushh images to dockerHUB
-    - docker push anh/multi-client
-    - docker push anh/multi-server
-    - docker push anh/multi-nginx
-    - docker push anh/multi-work
+    - docker push dcaprilfool/multi-client
+    - docker push dcaprilfool/multi-server
+    - docker push dcaprilfool/multi-nginx
+    - docker push dcaprilfool/multi-work
