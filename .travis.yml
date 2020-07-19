@@ -11,13 +11,13 @@ after_success:
     - docker build -t dcaprilfool/multi-client ./client
     - docker build -t dcaprilfool/multi-nginx ./nginx
     - docker build -t dcaprilfool/multi-worker ./worker
-    - dokcer build -t dcaprilfool/multi-server ./server
+    - docker build -t dcaprilfool/multi-server ./server
 
 # Login to DOCKER HUB
-    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+    - echo "$DOCKER_PASSWORD" | docker login -username "$DOCKER_ID" --password-stdin
 
 # pushh images to dockerHUB
     - docker push dcaprilfool/multi-client
     - docker push dcaprilfool/multi-server
     - docker push dcaprilfool/multi-nginx
-    - docker push dcaprilfool/multi-work
+    - docker push dcaprilfool/multi-worker
